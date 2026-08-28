@@ -18,6 +18,12 @@
         "backgroundColor": "#7C3AED"
       },
       "package": "com.velora.salon"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ca8b458f-f95e-4273-acce-fea4fa4d2566"
+      }
+    },
+    "owner": "lakshmanan_21122005"
   }
 }
