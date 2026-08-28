@@ -1,0 +1,21 @@
+{
+  "name": "velora-salon-platform",
+  "version": "1.0.0",
+  "description": "Velora - Premium salon discovery and appointment booking platform",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:web": "cd apps/web && npm run dev",
+    "dev:mobile": "cd apps/mobile && npm start",
+    "seed": "cd backend && npm run seed",
+    "test": "cd backend && npm test",
+    "install:all": "npm install && cd backend && npm install && cd ../apps/web && npm install && cd ../mobile && npm install"
+  },
+  "keywords": ["salon", "booking", "beauty", "appointment"],
+  "author": "Velora Team",
+  "license": "MIT"
+}
