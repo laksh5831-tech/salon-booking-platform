@@ -1,0 +1,15 @@
+**/node_modules/
+.git/
+.env
+.env.*
+!.env.example
+**/dist/
+coverage/
+logs/
+*.log
+.DS_Store
+Thumbs.db
+docs/
+*.md
+start.bat
+Run.bat

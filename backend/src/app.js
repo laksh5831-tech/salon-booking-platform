@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
+const path = require('path');
+const fs = require('fs');
 
 const routes = require('./routes');
 const errorHandler = require('./middleware/errorHandler');
@@ -12,7 +14,19 @@ const AppError = require('./utils/AppError');
 
 const app = express();
 
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      imgSrc: ["'self'", 'data:', 'https://images.unsplash.com'],
+      styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+      fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+      scriptSrc: ["'self'", 'https://js.stripe.com'],
+      frameSrc: ["'self'", 'https://js.stripe.com'],
+      connectSrc: ["'self'", 'https://api.stripe.com']
+    }
+  }
+}));
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true
@@ -75,6 +89,16 @@ app.get('/health', (req, res) => {
     uptime: process.uptime()
   });
 });
+
+// In production, serve the built web app (marketing site + web app) from
+// the same instance so one deployment hosts everything on one origin.
+const WEB_DIST = path.join(__dirname, '..', '..', 'apps', 'web', 'dist');
+if (process.env.NODE_ENV === 'production' && fs.existsSync(WEB_DIST)) {
+  app.use(express.static(WEB_DIST));
+  app.get(/^\/(?!api\/|health).*/, (req, res) => {
+    res.sendFile(path.join(WEB_DIST, 'index.html'));
+  });
+}
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Cannot find ${req.originalUrl} on this server`, 404));

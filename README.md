@@ -169,6 +169,31 @@ The availability engine (`backend/src/services/availabilityService.js`) calculat
 
 ---
 
+## Deployment
+
+One deployment hosts everything — marketing site, web app, API and Swagger — because the backend serves the built Vite app when `NODE_ENV=production` (see `backend/src/app.js`). The web client already calls the API at the relative path `/api/v1`, so no CORS/proxy setup is needed in production.
+
+### Option A — Docker / Render (recommended)
+
+```bash
+docker build -t velora .
+docker run -p 10000:10000 --env-file backend/.env velora
+# open http://localhost:10000
+```
+
+Or deploy `render.yaml` (Render Blueprint, free tier): point a new Blueprint at this repo, then fill in the `sync: false` env vars (MongoDB URI, JWT secrets, etc.). Replace the `STRIPE_*` placeholders with real keys when you go live.
+
+### Option B — Manual
+
+```bash
+cd apps/web && npm run build          # produces apps/web/dist
+cd backend && NODE_ENV=production npm start   # serves API + built site on :5000
+```
+
+**Before go-live**, replace the `velora.example.com` placeholders in `apps/web/index.html`, `apps/web/public/robots.txt`, `apps/web/public/sitemap.xml`, and this README with your actual domain.
+
+---
+
 ## Development Phases
 
 | Phase | Status | Description |

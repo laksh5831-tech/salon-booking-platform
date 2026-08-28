@@ -1,0 +1,34 @@
+services:
+  # Single Docker service: serves the marketing site + web app + API + Swagger.
+  - type: web
+    name: velora
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: CLIENT_URL
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: JWT_EXPIRE
+        sync: false
+      - key: JWT_REFRESH_EXPIRE
+        sync: false
+      - key: MOBILE_CLIENT_ID
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        value: sk_test_placeholder
+      - key: STRIPE_WEBHOOK_SECRET
+        value: whsec_placeholder
+      - key: STRIPE_PUBLISHABLE_KEY
+        value: pk_test_placeholder
