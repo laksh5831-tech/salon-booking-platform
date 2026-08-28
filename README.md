@@ -165,7 +165,7 @@ The availability engine (`backend/src/services/availabilityService.js`) calculat
 - **Multi-session refresh tokens**: each login issues a per-user `jti`-tracked refresh token with 15-minute rotation reuse grace and a max of 10 active sessions.
 - **Seed password hashing**: demo accounts seeded with `User.create` are stored as plaintext passwords (the model hook hashes them once); accounts seeded via `insertMany` pass the already-hashed value, since `insertMany` bypasses hooks.
 - **Currency**: all prices are INR (`₹`), localized throughout web and mobile.
-- **SEO**: static `index.html` meta/OG tags, JSON-LD `WebSite` schema, `robots.txt` and `sitemap.xml` in `apps/web/public` (update the `velora.example.com` domain placeholders before deploying).
+- **SEO**: static `index.html` meta/OG tags, JSON-LD `WebSite` schema, `robots.txt` and `sitemap.xml` in `apps/web/public` — canonical/OG URLs point at the live deployment `https://velora-23bj.onrender.com` (change `apps/web/index.html`, `apps/web/public/robots.txt`, `apps/web/public/sitemap.xml` if the domain changes).
 
 ---
 
@@ -189,6 +189,8 @@ Or deploy `render.yaml` (Render Blueprint, free tier): point a new Blueprint at 
 cd apps/web && npm run build          # produces apps/web/dist
 cd backend && NODE_ENV=production npm start   # serves API + built site on :5000
 ```
+
+You can see the live single-container deployment here: **https://velora-23bj.onrender.com** (marketing site + web app + API `<origin>/api/v1` + Swagger `<origin>/api/docs`).
 
 **Before go-live**, replace the `velora.example.com` placeholders in `apps/web/index.html`, `apps/web/public/robots.txt`, `apps/web/public/sitemap.xml`, and this README with your actual domain.
 

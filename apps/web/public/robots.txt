@@ -5,4 +5,4 @@ Disallow: /admin
 Disallow: /salon-dashboard
 Disallow: /account
 
-Sitemap: https://velora.example.com/sitemap.xml
+Sitemap: https://velora-23bj.onrender.com/sitemap.xml
