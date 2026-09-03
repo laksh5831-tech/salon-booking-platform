@@ -37,14 +37,14 @@ const AuthStack = () => (
 
 const TabIcon = ({ name, focused, color }) => {
   const icons = {
-    Home: '🏠',
-    Search: '🔍',
-    Bookings: '📅',
-    Profile: '👤',
+    Home: 'x',
+    Search: 'x',
+    Bookings: 'x',
+    Profile: 'x',
   };
   return (
     <Text style={{ fontSize: 22, opacity: focused ? 1 : 0.5 }}>
-      {icons[name] || '•'}
+      {icons[name] || 'x'}
     </Text>
   );
 };
