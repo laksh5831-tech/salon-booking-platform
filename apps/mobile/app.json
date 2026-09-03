@@ -15,7 +15,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#7C3AED"
+        "backgroundColor": "#7C3AED",
+        "foregroundImage": "./assets/adaptive-icon-foreground.png"
       },
       "package": "com.velora.salon"
     },
