@@ -18,6 +18,9 @@
         "projectId": "ca8b458f-f95e-4273-acce-fea4fa4d2566"
       }
     },
-    "owner": "lakshmanan_21122005"
+    "owner": "lakshmanan_21122005",
+    "plugins": [
+      "expo-splash-screen"
+    ]
   }
 }
