@@ -6,18 +6,11 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "backgroundColor": "#7C3AED"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.velora.salon"
     },
     "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#7C3AED",
-        "foregroundImage": "./assets/adaptive-icon-foreground.png"
-      },
       "package": "com.velora.salon"
     },
     "extra": {
@@ -25,10 +18,6 @@
         "projectId": "ca8b458f-f95e-4273-acce-fea4fa4d2566"
       }
     },
-    "owner": "lakshmanan_21122005",
-    "plugins": [
-      "expo-status-bar",
-      "expo-splash-screen"
-    ]
+    "owner": "lakshmanan_21122005"
   }
 }
